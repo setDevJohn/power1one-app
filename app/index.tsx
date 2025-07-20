@@ -2,6 +2,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import ProductCard from '@/components/ProductCard';
 import { productsApi } from '@/services/products';
 import { Product } from '@/services/products/interfacec';
+import { showToast } from '@/utils/toast';
 import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
@@ -27,6 +28,10 @@ export default function HomeScreen() {
         });
       } catch (err) {
         console.error('Erro ao buscar produtos:', err)
+        showToast({
+          type: 'error',
+          text1: 'Erro ao buscar produtos!'
+        });
       } finally {
         setIsLoading(false);
       }

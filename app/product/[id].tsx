@@ -1,6 +1,7 @@
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { productsApi } from '@/services/products';
 import { Product } from '@/services/products/interfacec';
+import { showToast } from '@/utils/toast';
 import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
@@ -12,7 +13,6 @@ import {
   View
 } from 'react-native';
 import RenderHtml from 'react-native-render-html';
-
 
 export default function ProductDetailScreen() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,6 +30,10 @@ export default function ProductDetailScreen() {
         setProduct(response.Product); 
       } catch (error) {
         console.error('Erro ao buscar informações do produto:', error);
+        showToast({ 
+          type: 'error',
+          text1: 'Erro ao buscar informações do produto!'
+        });
       } finally {
         setIsLoading(false);
       }

@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
+import Toast from 'react-native-toast-message';
 
 export default function RootLayout() {
   return (
@@ -14,7 +15,9 @@ export default function RootLayout() {
       </View>
 
       <BottomNav />
+
       <StatusBar style="dark" />
+      <Toast /> 
     </View>
   );
 }
